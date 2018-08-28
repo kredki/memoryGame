@@ -1,6 +1,12 @@
+'use strict'
+
+var Piece = function (isPieceToGuess) {
+    this.toGuess = isPieceToGuess;
+}
+
 var game = (function () {
 
-    var initialNumberOfPieces = 5,
+    var initialNumberOfPieces = 4,
         currentNumberOfPieces,
         startGame = function (config) {
             if (config && config.numberOfPieces) {
@@ -15,11 +21,16 @@ var game = (function () {
                 pieces = [];
 
             for(i=0; i < currentNumberOfPieces; i++) {
-                pieces.push({});
+                pieces.push(new Piece(false));
             }
             pieces[0].toGuess = true;
             return pieces;
-        };
+        },
+
+        getInitialNumberOfPieces = function () {
+            return initialNumberOfPieces;
+        }
+    ;
 
     return {
         'startGame': startGame,

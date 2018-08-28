@@ -1,11 +1,11 @@
 describe('Game', function () {
-   it('should have 5 pieces after game start', function () {
+   it('should have 4 pieces after game start', function () {
       var pieces;
       game.startGame();
 
       pieces = game.getPieces();
 
-      expect(pieces.length).toBe(5);
+      expect(pieces.length).toBe(4);
    });
 
     it('one pieces should be to guess after game start', function () {

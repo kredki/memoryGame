@@ -5,7 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-<button>start game</button>
+<button onclick="controller.startGame()">start game</button>
+<br>
+<p>Initial number of pieces: <input id ="initialNumberOfPieces" type = "number" value=4 min=4></p>
+<br>
+<article id = "pieces"></article>
 <script src="js/game.js"></script>
 <script src="js/view.js"></script>
 <script src="js/controller.js"></script>
