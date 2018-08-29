@@ -2,12 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Memory game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <button onclick="controller.startGame()">start game</button>
 <br>
-<p>Initial number of pieces: <input id ="initialNumberOfPieces" type = "number" value=4 min=4></p>
+<br>
+<button onclick="controller.addLevel()">Add level</button>
+<br>
+<br>
+<p>Highlight time: <input id="time" type="number" value="1"></p>
+<br>
 <br>
 <article id = "pieces"></article>
 <script src="js/game.js"></script>

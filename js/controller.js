@@ -1,8 +1,10 @@
-'use strict'
+'use strict';
 var controller = function () {
     var startGame = function () {
-        var initialNumberOfPieces = view.getInitialNumberOfPieces();
+        var initialNumberOfPieces = game.getNumberOfPieces();
+        var highlightTime = view.getHighlightTime();
 
+        console.log("highlight time: " + highlightTime);
         console.log("start with " + initialNumberOfPieces + " pieces");
         game.startGame({
             numberOfPieces: initialNumberOfPieces
@@ -10,14 +12,21 @@ var controller = function () {
 
         view.renderPieces(game.getPieces());
 
-    };
+    },
 
-    var pieceClicked = function (piece) {
+    pieceClicked = function (piece) {
         console.log("piece clicked no: " + piece.id);
+    },
+
+    addLevel = function () {
+        game.addLevel();
+        game.startGame();
+        view.renderPieces(game.getPieces());
     };
 
     return {
         'startGame': startGame,
-        'pieceClicked' : pieceClicked
+        'pieceClicked' : pieceClicked,
+        'addLevel' : addLevel
     }
 }();

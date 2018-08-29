@@ -1,9 +1,5 @@
-'use strict'
+'use strict';
 var view = (function () {
-    var getInitialNumberOfPieces = function () {
-        return document.getElementById("initialNumberOfPieces").value;
-    };
-
     var renderPieces = function (pieces) {
         var i;
         var element = document.getElementById("pieces");
@@ -13,16 +9,18 @@ var view = (function () {
 
         for(i=0; i < pieces.length; i++) {
             var para = document.createElement("button");
-            var node = document.createTextNode("This is new.");
-            para.appendChild(node);
             para.setAttribute("onclick", "controller.pieceClicked(this)")
             para.setAttribute("id", i);
             element.appendChild(para);
         }
-    }
+    };
+
+    var getHighlightTime = function () {
+        return document.getElementById("time").value;
+    };
 
     return {
-        'getInitialNumberOfPieces': getInitialNumberOfPieces,
-        'renderPieces' : renderPieces
+        'renderPieces' : renderPieces,
+        'getHighlightTime' : getHighlightTime
     }
 })();
