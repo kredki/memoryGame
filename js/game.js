@@ -11,6 +11,7 @@ var game = (function () {
         level = 0,
         currentNumberOfPieces,
         currentPieces,
+        numberOfRemainedPiecesToGuess,
         startGame = function (config) {
             if (config && config.numberOfPieces) {
                 currentNumberOfPieces = config.numberOfPieces;
@@ -37,14 +38,15 @@ var game = (function () {
 
         setPiecesToGuess = function (pieces) {
             var numberOfSetPieces = 0;
-            var numberOfPieceToGuess;
+            var indexOfPieceToGuess;
             while (numberOfSetPieces < pieces.length / 2 - 1) {
-                numberOfPieceToGuess = getRandomInt(pieces.length);
-                if(pieces[numberOfPieceToGuess].toGuess === false) {
-                    pieces[numberOfPieceToGuess].toGuess = true;
+                indexOfPieceToGuess = getRandomInt(pieces.length);
+                if(pieces[indexOfPieceToGuess].toGuess === false) {
+                    pieces[indexOfPieceToGuess].toGuess = true;
                     numberOfSetPieces++;
                 }
             }
+            numberOfRemainedPiecesToGuess = numberOfSetPieces;
         },
 
         getRandomInt = function (max) {
@@ -57,6 +59,15 @@ var game = (function () {
 
         addLevel = function () {
             level++;
+        },
+
+        checkIfGuessed = function (id) {
+            if(currentPieces[id].toGuess === true) {
+                currentPieces[id].toGuess = false;
+                numberOfRemainedPiecesToGuess--;
+                return true;
+            }
+            return false;
         }
     ;
 
@@ -64,6 +75,7 @@ var game = (function () {
         'startGame': startGame,
         'getPieces': getPieces,
         'getNumberOfPieces': getNumberOfPieces,
-        'addLevel' : addLevel
+        'addLevel' : addLevel,
+        'checkIfGuessed' : checkIfGuessed
     }
 })();

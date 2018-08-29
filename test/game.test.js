@@ -8,6 +8,25 @@ describe('Game', function () {
       expect(pieces.length).toBe(4);
    });
 
+    it('should guess piece', function () {
+        var pieces;
+        var i;
+        var piecesToGuess = [];
+        game.startGame();
+
+        pieces = game.getPieces();
+
+        for(i = 0; i < pieces.length; i++) {
+            if(pieces[i].toGuess === true) {
+                piecesToGuess.push(i);
+            }
+        }
+
+        for(i = 0; i < piecesToGuess.length; i++) {
+            expect(game.checkIfGuessed(piecesToGuess[i])).toBe(true);
+        }
+    });
+
     it('one pieces should be to guess after game start', function () {
         var piecesToGuess;
         game.startGame();
