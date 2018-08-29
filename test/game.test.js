@@ -1,12 +1,12 @@
 describe('Game', function () {
-   it('should have 4 pieces after game start', function () {
-      var pieces;
-      game.startGame();
+    it('should have 4 pieces after game start', function () {
+        var pieces;
+        game.startGame();
 
-      pieces = game.getPieces();
+        pieces = game.getPieces();
 
-      expect(pieces.length).toBe(4);
-   });
+        expect(pieces.length).toBe(4);
+    });
 
     it('should guess piece', function () {
         var pieces;
@@ -16,15 +16,35 @@ describe('Game', function () {
 
         pieces = game.getPieces();
 
-        for(i = 0; i < pieces.length; i++) {
-            if(pieces[i].toGuess === true) {
+        for (i = 0; i < pieces.length; i++) {
+            if (pieces[i].toGuess === true) {
                 piecesToGuess.push(i);
             }
         }
 
-        for(i = 0; i < piecesToGuess.length; i++) {
+        for (i = 0; i < piecesToGuess.length; i++) {
             expect(game.checkIfGuessed(piecesToGuess[i])).toBe(true);
         }
+    });
+
+    it('should not guess the same piece twice', function () {
+        var pieces;
+        var i;
+        var piecesToGuessIndex;
+        game.startGame();
+
+        pieces = game.getPieces();
+
+        for (i = 0; i < pieces.length; i++) {
+            if (pieces[i].toGuess === true) {
+                piecesToGuessIndex = i;
+                break;
+            }
+        }
+
+        expect(game.checkIfGuessed(piecesToGuessIndex)).toBe(true);
+        expect(game.checkIfGuessed(piecesToGuessIndex)).toBe(false);
+
     });
 
     it('one pieces should be to guess after game start', function () {
@@ -63,7 +83,7 @@ describe('Game', function () {
     it('should start game with configured number of pieces', function () {
         var pieces,
             config = {
-               numberOfPieces: 6
+                numberOfPieces: 6
             };
         game.startGame(config);
 
@@ -75,7 +95,7 @@ describe('Game', function () {
 
     function findPiecesToGuess(pieces) {
         return pieces.filter(function (piece) {
-           return piece.toGuess;
+            return piece.toGuess;
         });
     }
 });
