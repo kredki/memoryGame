@@ -15,6 +15,8 @@ var view = (function () {
             var para = document.createElement("button");
             var node = document.createTextNode("This is new.");
             para.appendChild(node);
+            para.setAttribute("onclick", "controller.pieceClicked(this)")
+            para.setAttribute("id", i);
             element.appendChild(para);
         }
     }

@@ -1,7 +1,9 @@
 'use strict'
 
-var Piece = function (isPieceToGuess) {
+var Piece = function (isPieceToGuess, pieceNumber) {
     this.toGuess = isPieceToGuess;
+    this.pieceIsGuessed = false;
+    this.pieceNumber = pieceNumber;
 }
 
 var game = (function () {
@@ -21,7 +23,7 @@ var game = (function () {
                 pieces = [];
 
             for(i=0; i < currentNumberOfPieces; i++) {
-                pieces.push(new Piece(false));
+                pieces.push(new Piece(false, i));
             }
             pieces[0].toGuess = true;
             return pieces;

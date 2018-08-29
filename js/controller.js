@@ -3,7 +3,7 @@ var controller = function () {
     var startGame = function () {
         var initialNumberOfPieces = view.getInitialNumberOfPieces();
 
-        alert("start with " + initialNumberOfPieces + " pieces");
+        console.log("start with " + initialNumberOfPieces + " pieces");
         game.startGame({
             numberOfPieces: initialNumberOfPieces
         });
@@ -12,7 +12,12 @@ var controller = function () {
 
     };
 
+    var pieceClicked = function (piece) {
+        console.log("piece clicked no: " + piece.id);
+    };
+
     return {
-        'startGame': startGame
+        'startGame': startGame,
+        'pieceClicked' : pieceClicked
     }
 }();
