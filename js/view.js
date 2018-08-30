@@ -37,7 +37,9 @@ var view = (function () {
                 highlightTime = highlightTimeFromPage;
             }
 
-            setTimeout(function () {unhighlightPieces(pieces)}, highlightTime * 1000);
+            setTimeout(function () {
+                unhighlightPieces(pieces)
+            }, highlightTime * 1000);
         },
 
         unhighlightPieces = function (pieces) {
@@ -48,12 +50,22 @@ var view = (function () {
 
             }
             controller.highlightIsFinished();
+        },
+
+        highlightGreen = function (id) {
+            document.getElementById(id).style.backgroundColor = "green";
+        },
+
+        highlightRed = function (id) {
+            document.getElementById(id).style.backgroundColor = "red";
         };
 
     return {
         'renderPieces': renderPieces,
         'getHighlightTime': getHighlightTime,
         'setNumberOfRemainedPiecesToGuess': setNumberOfRemainedPiecesToGuess,
-        'highlightPieces': highlightPieces
+        'highlightPieces': highlightPieces,
+        'highlightGreen': highlightGreen,
+        'highlightRed' : highlightRed
     }
 })();

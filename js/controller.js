@@ -35,7 +35,9 @@ var controller = function () {
             isPieceGuessed = game.checkIfGuessed(piece.id);
             console.log(isPieceGuessed);
             if(isPieceGuessed) {
-                if(game.getNumberOfRemainedPiecesToGuess() == 0) {
+                view.highlightGreen(piece.id);
+
+                if(game.getNumberOfRemainedPiecesToGuess() === 0) {
                     isHighLightActive = true;
                     game.addLevel();
                     game.startGame();
@@ -45,7 +47,12 @@ var controller = function () {
                     view.highlightPieces(pieces);
                 }
             } else {
-                startGame();
+                isHighLightActive = true;
+                view.highlightRed(piece.id);
+                setTimeout(function () {
+                    isHighLightActive = false;
+                    startGame();
+                }, 500);
             }
         },
 
