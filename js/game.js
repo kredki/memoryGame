@@ -20,7 +20,7 @@ var game = (function () {
             }
         },
 
-        getPieces = function () {
+        initializePieces = function () {
             var i,
                 pieces = [];
 
@@ -41,7 +41,7 @@ var game = (function () {
             var indexOfPieceToGuess;
             while (numberOfSetPieces < pieces.length / 2 - 1) {
                 indexOfPieceToGuess = getRandomInt(pieces.length);
-                if(pieces[indexOfPieceToGuess].toGuess === false) {
+                if (pieces[indexOfPieceToGuess].toGuess === false) {
                     pieces[indexOfPieceToGuess].toGuess = true;
                     numberOfSetPieces++;
                 }
@@ -61,21 +61,31 @@ var game = (function () {
             level++;
         },
 
+        resetLevel = function () {
+            level = 0;
+        },
+
         checkIfGuessed = function (id) {
-            if(currentPieces[id].toGuess === true) {
+            if (currentPieces[id].toGuess === true) {
                 currentPieces[id].toGuess = false;
                 numberOfRemainedPiecesToGuess--;
                 return true;
             }
             return false;
+        },
+
+        getNumberOfRemainedPiecesToGuess = function () {
+            return numberOfRemainedPiecesToGuess;
         }
     ;
 
     return {
         'startGame': startGame,
-        'getPieces': getPieces,
+        'initializePieces': initializePieces,
         'getNumberOfPieces': getNumberOfPieces,
-        'addLevel' : addLevel,
-        'checkIfGuessed' : checkIfGuessed
+        'addLevel': addLevel,
+        'resetLevel': resetLevel,
+        'checkIfGuessed': checkIfGuessed,
+        'getNumberOfRemainedPiecesToGuess': getNumberOfRemainedPiecesToGuess
     }
 })();

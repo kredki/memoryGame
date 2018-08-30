@@ -6,16 +6,19 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<button onclick="controller.startGame()">start game</button>
+<button onclick="controller.startGame()">Start game</button>
 <br>
 <br>
 <button onclick="controller.addLevel()">Add level</button>
 <br>
 <br>
-<p>Highlight time: <input id="time" type="number" value="1"></p>
+<p>Highlight time: <input id="time" type="number" value="1" min="1"></p>
 <br>
 <br>
-<article id = "pieces"></article>
+<p>Number of remained pieces to guess: <b id="remainedPieces">0</b></p>
+<br>
+<br>
+<article id="pieces"></article>
 <script src="js/game.js"></script>
 <script src="js/view.js"></script>
 <script src="js/controller.js"></script>

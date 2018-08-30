@@ -3,7 +3,7 @@ describe('Game', function () {
         var pieces;
         game.startGame();
 
-        pieces = game.getPieces();
+        pieces = game.initializePieces();
 
         expect(pieces.length).toBe(4);
     });
@@ -14,7 +14,7 @@ describe('Game', function () {
         var piecesToGuess = [];
         game.startGame();
 
-        pieces = game.getPieces();
+        pieces = game.initializePieces();
 
         for (i = 0; i < pieces.length; i++) {
             if (pieces[i].toGuess === true) {
@@ -33,7 +33,7 @@ describe('Game', function () {
         var piecesToGuessIndex;
         game.startGame();
 
-        pieces = game.getPieces();
+        pieces = game.initializePieces();
 
         for (i = 0; i < pieces.length; i++) {
             if (pieces[i].toGuess === true) {
@@ -51,7 +51,7 @@ describe('Game', function () {
         var piecesToGuess;
         game.startGame();
 
-        piecesToGuess = findPiecesToGuess(game.getPieces());
+        piecesToGuess = findPiecesToGuess(game.initializePieces());
 
         expect(piecesToGuess.length).toBe(1);
     });
@@ -63,7 +63,7 @@ describe('Game', function () {
             };
         game.startGame(config);
 
-        piecesToGuess = findPiecesToGuess(game.getPieces());
+        piecesToGuess = findPiecesToGuess(game.initializePieces());
 
         expect(piecesToGuess.length).toBe(2);
     });
@@ -75,7 +75,7 @@ describe('Game', function () {
             };
         game.startGame(config);
 
-        piecesToGuess = findPiecesToGuess(game.getPieces());
+        piecesToGuess = findPiecesToGuess(game.initializePieces());
 
         expect(piecesToGuess.length).toBe(3);
     });
@@ -87,7 +87,7 @@ describe('Game', function () {
             };
         game.startGame(config);
 
-        pieces = game.getPieces();
+        pieces = game.initializePieces();
 
         expect(pieces.length).toBe(6);
     });
