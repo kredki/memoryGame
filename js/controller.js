@@ -2,15 +2,15 @@
 var controller = function () {
     var isHighLightActive = false,
         startGame = function () {
-            var initialNumberOfPieces = 4;
-            var highlightTime = view.getHighlightTime();
+            var initialNumberOfPieces = 4,
+                highlightTime = view.getHighlightTime(),
+                pieces;
 
             if (isHighLightActive) {
                 return;
             }
             isHighLightActive = true;
 
-            var pieces;
             game.resetLevel();
             console.log("highlight time: " + highlightTime);
 
@@ -26,18 +26,19 @@ var controller = function () {
         },
 
         pieceClicked = function (piece) {
-            var pieces;
+            var pieces,
+                isPieceGuessed;
             if (isHighLightActive) {
                 return;
             }
-            var isPieceGuessed;
+
             console.log("piece clicked no: " + piece.id);
             isPieceGuessed = game.checkIfGuessed(piece.id);
             console.log(isPieceGuessed);
-            if(isPieceGuessed) {
+            if (isPieceGuessed) {
                 view.highlightGreen(piece.id);
 
-                if(game.getNumberOfRemainedPiecesToGuess() === 0) {
+                if (game.getNumberOfRemainedPiecesToGuess() === 0) {
                     isHighLightActive = true;
                     game.addLevel();
                     game.startGame();
@@ -74,6 +75,6 @@ var controller = function () {
         'startGame': startGame,
         'pieceClicked': pieceClicked,
         'addLevel': addLevel,
-        'highlightIsFinished' : highlightIsFinished
+        'highlightIsFinished': highlightIsFinished
     }
 }();
