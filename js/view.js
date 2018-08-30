@@ -47,6 +47,7 @@ var view = (function () {
                 document.getElementById(i).style.backgroundColor = "yellow";
 
             }
+            controller.highlightIsFinished();
         };
 
     return {
