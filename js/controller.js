@@ -58,13 +58,18 @@ var controller = function () {
         },
 
         addLevel = function () {
+            var pieces;
             if (isHighLightActive) {
                 return;
             }
+            isHighLightActive = true;
+
             game.addLevel();
             game.startGame();
-            view.renderPieces(game.initializePieces());
+            pieces = game.initializePieces();
+            view.renderPieces(pieces);
             view.setNumberOfRemainedPiecesToGuess(game.getNumberOfRemainedPiecesToGuess());
+            view.highlightPieces(pieces);
         },
 
         highlightIsFinished = function () {
