@@ -50,7 +50,7 @@ var game = (function () {
         },
 
         getRandomInt = function (max) {
-            return Math.floor(Math.random() * (max - 1));
+            return Math.floor(Math.random() * max);
         },
 
         getNumberOfPieces = function () {

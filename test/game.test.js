@@ -113,6 +113,23 @@ describe('Game', function () {
         expect(pieces.length).toBe(6);
     });
 
+    it('should reset level', function () {
+        //given
+        var numberOfPiecesBefore,
+        numberOfPiecesAfter;
+        game.startGame();
+
+        //when
+        game.addLevel();
+        numberOfPiecesBefore = game.getNumberOfPieces();
+        game.resetLevel();
+        numberOfPiecesAfter = game.getNumberOfPieces();
+
+            //then
+        expect(numberOfPiecesBefore).toBe(6);
+        expect(numberOfPiecesAfter).toBe(4);
+    });
+
 
     function findPiecesToGuess(pieces) {
         return pieces.filter(function (piece) {
