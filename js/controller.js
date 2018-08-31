@@ -46,6 +46,8 @@ var controller = function () {
                     view.renderPieces(pieces);
                     view.setNumberOfRemainedPiecesToGuess(game.getNumberOfRemainedPiecesToGuess());
                     view.highlightPieces(pieces);
+                } else {
+                    view.setNumberOfRemainedPiecesToGuess(game.getNumberOfRemainedPiecesToGuess());
                 }
             } else {
                 isHighLightActive = true;

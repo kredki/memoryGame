@@ -14,8 +14,8 @@ describe('Game', function () {
     it('should guess piece', function () {
         //given
         var pieces,
-        i,
-        piecesToGuess = [];
+            i,
+            piecesToGuess = [];
         game.startGame();
 
         //when
@@ -36,8 +36,8 @@ describe('Game', function () {
     it('should not guess the same piece twice', function () {
         //given
         var pieces,
-        i,
-        piecesToGuessIndex;
+            i,
+            piecesToGuessIndex;
         game.startGame();
 
         //when
@@ -116,7 +116,7 @@ describe('Game', function () {
     it('should reset level', function () {
         //given
         var numberOfPiecesBefore,
-        numberOfPiecesAfter;
+            numberOfPiecesAfter;
         game.startGame();
 
         //when
@@ -125,7 +125,7 @@ describe('Game', function () {
         game.resetLevel();
         numberOfPiecesAfter = game.getNumberOfPieces();
 
-            //then
+        //then
         expect(numberOfPiecesBefore).toBe(6);
         expect(numberOfPiecesAfter).toBe(4);
     });

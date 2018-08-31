@@ -98,7 +98,7 @@ describe('Controller', function () {
         expect(game.startGame).not.toHaveBeenCalled();
         expect(game.initializePieces).not.toHaveBeenCalled();
         expect(view.renderPieces).not.toHaveBeenCalledWith(pieces);
-        expect(view.setNumberOfRemainedPiecesToGuess).not.toHaveBeenCalledWith(piecesToGuess);
+        expect(view.setNumberOfRemainedPiecesToGuess).toHaveBeenCalledWith(piecesToGuess);
         expect(view.highlightPieces).not.toHaveBeenCalledWith(pieces);
     });
 
