@@ -130,6 +130,33 @@ describe('Game', function () {
         expect(numberOfPiecesAfter).toBe(4);
     });
 
+    it('should reset level', function () {
+        //given
+        var numberOfPiecesBefore,
+            numberOfPiecesAfter,
+            pieces,
+            i,
+            idToGuess;
+        game.startGame();
+
+        //when
+        pieces = game.initializePieces();
+        numberOfPiecesBefore = game.getNumberOfRemainedPiecesToGuess();
+        for (i = 0; i < pieces.length; i++) {
+            if (pieces[i].toGuess === true) {
+                idToGuess = i;
+                break;
+            }
+        }
+        game.checkIfGuessed(idToGuess);
+        numberOfPiecesAfter = game.getNumberOfRemainedPiecesToGuess();
+
+        //then
+        expect(numberOfPiecesBefore).toBe(1);
+        expect(numberOfPiecesAfter).toBe(0);
+
+    });
+
 
     function findPiecesToGuess(pieces) {
         return pieces.filter(function (piece) {
