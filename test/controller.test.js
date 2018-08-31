@@ -142,4 +142,32 @@ describe('Controller', function () {
         expect(view.highlightPieces).not.toHaveBeenCalledWith(pieces);
     });
 
+    it('should highlight pieces after click highlight', function () {
+        //given
+        var piece = {},
+            piecesToGuess = 0,
+            pieces = [];
+        piece.id = 1;
+
+        spyOn(game, 'startGame');
+        spyOn(game, 'initializePieces').and.returnValue(pieces);
+        spyOn(view, 'renderPieces');
+        spyOn(game, 'getNumberOfRemainedPiecesToGuess').and.returnValue(piecesToGuess);
+        spyOn(view, 'setNumberOfRemainedPiecesToGuess');
+        spyOn(view, 'highlightPieces');
+
+        controller.highlightIsFinished();
+
+        //when
+        controller.highlight();
+
+        //then
+        expect(game.startGame).toHaveBeenCalled();
+        expect(game.initializePieces).toHaveBeenCalled();
+        expect(view.renderPieces).toHaveBeenCalledWith(pieces);
+        expect(game.getNumberOfRemainedPiecesToGuess).toHaveBeenCalled();
+        expect(view.setNumberOfRemainedPiecesToGuess).toHaveBeenCalledWith(piecesToGuess);
+        expect(view.highlightPieces).toHaveBeenCalledWith(pieces);
+    });
+
 });

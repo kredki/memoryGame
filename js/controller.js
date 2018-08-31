@@ -74,12 +74,27 @@ var controller = function () {
 
         highlightIsFinished = function () {
             isHighLightActive = false;
+        },
+
+        highlight = function () {
+            var pieces;
+            if (isHighLightActive) {
+                return;
+            }
+            isHighLightActive = true;
+
+            game.startGame();
+            pieces = game.initializePieces();
+            view.renderPieces(pieces);
+            view.setNumberOfRemainedPiecesToGuess(game.getNumberOfRemainedPiecesToGuess());
+            view.highlightPieces(pieces);
         };
 
     return {
         'startGame': startGame,
         'pieceClicked': pieceClicked,
         'addLevel': addLevel,
-        'highlightIsFinished': highlightIsFinished
+        'highlightIsFinished': highlightIsFinished,
+        'highlight': highlight
     }
 }();
